@@ -33,9 +33,10 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
-      .parallax-blob {
+      /* -- ОТКЛЮЧЕНО: Стили для parallax-blob при prefers-reduced-motion -- */
+      /* .parallax-blob {
         display: none !important; /* Disable parallax blobs on reduced motion */
-      }
+      /* } */
     }
 
     /* Base Styles */
@@ -449,6 +450,9 @@
       display: flex;
       flex-direction: column;
       height: 100%;
+      /* -- ИЗМЕНЕНИЕ: Центрирование маскота в column-right -- */
+      justify-content: center; /* Центрирует содержимое по вертикали */
+      align-items: center; /* Центрирует содержимое по горизонтали */
     }
     .about-card { /* Применяем стили about-text-frame к about-card */
       text-align: center;
@@ -475,8 +479,9 @@
       margin-bottom: 1.5rem; /* mb-6 */
     }
     #about .column-right .mascot-container {
-      margin-top: auto; /* mt-auto */
-      align-self: flex-end; /* Pushes mascot to the bottom-right visually */
+      /* -- ИЗМЕНЕНИЕ: Удалены стили, которые мешали центрированию маскота -- */
+      /* margin-top: auto; */
+      /* align-self: flex-end; */ /* Pushes mascot to the bottom-right visually */
     }
 
     /* Services Section Specific */
@@ -688,7 +693,7 @@
       font-size: 0.875rem; /* text-sm */
       font-weight: 600; /* font-semibold */
     }
-    .review-card a:hover {
+    #reviews .review-card a:hover { /* Fix for specificity */
       text-decoration: underline;
     }
 
@@ -763,17 +768,22 @@
     }
     /* Specific section backgrounds are set directly */
 
+    /* -- ОТКЛЮЧЕНО: Стили для parallax-blob -- */
+    /*
     .parallax-blob {
       position: absolute;
       background: radial-gradient(circle, var(--blob-color), transparent 70%);
       filter: blur(80px);
       opacity: 0.3;
       z-index: 0; /* Blobs below content */
-      pointer-events: none;
+      /* pointer-events: none;
       transition: transform 0.1s linear; /* Smooth movement */
-    }
+    /* }
+    */
 
     /* Hero blobs */
+    /* -- ОТКЛЮЧЕНО: Стили для parallax-blob в Hero секции -- */
+    /*
     #hero .parallax-blob:nth-child(1) {
       --blob-color: var(--purple-accent);
       width: 400px; height: 400px;
@@ -789,8 +799,11 @@
       width: 300px; height: 300px;
       top: 50%; left: 70%;
     }
+    */
 
     /* About blobs */
+    /* -- ОТКЛЮЧЕНО: Стили для parallax-blob в About секции -- */
+    /*
     #about .parallax-blob:nth-child(1) {
       --blob-color: var(--cyan-accent);
       width: 350px; height: 350px;
@@ -806,6 +819,7 @@
       width: 250px; height: 250px;
       top: 40%; left: 60%;
     }
+    */
 
 
     /* Responsive adjustments */
@@ -832,9 +846,10 @@
       .marquee-content {
         font-size: 0.9rem;
       }
-      .parallax-blob {
+      /* -- ОТКЛЮЧЕНО: Стили для parallax-blob на мобильных -- */
+      /* .parallax-blob {
         display: none; /* Disable parallax blobs on smaller screens */
-      }
+      /* } */
       #hero .hero-grid {
         grid-template-columns: 1fr;
       }
@@ -902,11 +917,12 @@
 
   <main>
     <section id="hero" class="parallax-section">
-      <!-- Parallax blobs for Hero section -->
+      <!-- -- ОТКЛЮЧЕНО: Parallax blobs для Hero секции -- -->
+      <!--
       <div class="parallax-blob" data-speed="-0.1"></div>
       <div class="parallax-blob" data-speed="-0.2"></div>
       <div class="parallax-blob" data-speed="-0.15"></div>
-
+      -->
       <div class="section-content container">
         <h1>НЕТ ШАБЛОНАМ - ТОЛЬКО ТВОЙ УНИКАЛЬНЫЙ САЙТ</h1>
         <div class="hero-grid">
@@ -937,11 +953,12 @@
     </div>
 
     <section id="about" class="parallax-section">
-      <!-- Parallax blobs for About section -->
+      <!-- -- ОТКЛЮЧЕНО: Parallax blobs для About секции -- -->
+      <!--
       <div class="parallax-blob" data-speed="-0.15"></div>
       <div class="parallax-blob" data-speed="-0.25"></div>
       <div class="parallax-blob" data-speed="-0.1"></div>
-
+      -->
       <div class="section-content container">
         <h2>ПРОСТРАНСТВО, ГДЕ ЦЕНЯТ ИНДИВИДУАЛЬНОСТЬ</h2>
         <div class="about-grid">
@@ -950,18 +967,31 @@
               <h3>Технологии</h3>
               <p>Современный стандартный стек веб-разработки для быстрых и надёжных решений.</p>
             </div>
+            <!-- -- ИЗМЕНЕНИЕ: Карточка "Подход к работе" удалена -- -->
+            <!--
             <div class="about-card about-text-frame mascot-fade">
               <h3>Подход к работе</h3>
               <p>Всегда начинаю с глубокого погружения в задачу, изучаю аудиторию, разрабатываю прототип, тестирую. Прозрачность и коммуникация.</p>
             </div>
-          </div>
-          <div class="column-right">
+            -->
+            <!-- -- ИЗМЕНЕНИЕ: Карточка "Почему меня выбирают" перемещена сюда -- -->
             <div class="about-card about-text-frame mascot-fade">
               <h3>Почему меня выбирают</h3>
               <p><strong style="color: var(--purple-accent);">Индивидуальный подход:</strong> без шаблонов.</p>
               <p><strong style="color: var(--cyan-accent);">Прозрачность:</strong> всегда знаете статус проекта.</p>
               <p><strong style="color: var(--purple-accent);">Поддержка:</strong> помогаю после запуска.</p>
             </div>
+          </div>
+          <div class="column-right">
+            <!-- -- ИЗМЕНЕНИЕ: Карточка "Почему меня выбирают" была перемещена. Здесь остался только маскот -- -->
+            <!--
+            <div class="about-card about-text-frame mascot-fade">
+              <h3>Почему меня выбирают</h3>
+              <p><strong style="color: var(--purple-accent);">Индивидуальный подход:</strong> без шаблонов.</p>
+              <p><strong style="color: var(--cyan-accent);">Прозрачность:</strong> всегда знаете статус проекта.</p>
+              <p><strong style="color: var(--purple-accent);">Поддержка:</strong> помогаю после запуска.</p>
+            </div>
+            -->
             <div class="mascot-container mascot-fade mascot-slide-right">
               <!-- INSERT ABOUT MASCOT IMAGE HERE -->
               <!-- Suggested path: images/mascot-about.png -->
@@ -1048,7 +1078,7 @@
               <p>Мгновенная конвертация между единицами измерения: длина, вес, температура.</p>
               <a href="#" aria-label="Попробовать Конвертер единиц">ПОПРОБЫВАТЬ</a>
             </div>
-            <!-- Дублируем карточки для бесшовного loop -->
+            <!-- -- ИЗМЕНЕНИЕ: Дубликаты карточек для бесшовного loop ВОССТАНОВЛЕНЫ -- -->
             <div class="app-card-marquee about-text-frame">
               <img src="https://i.ibb.co/W4Nw8smj/app-4.png" alt="App: Генератор паролей" />
               <h3 style="color: var(--purple-accent);">Генератор паролей</h3>
@@ -1121,7 +1151,8 @@
         <div class="contacts-grid">
           <div class="contact-info-card about-text-frame mascot-fade">
             <p style="color: var(--cyan-accent);">телефон: [+7 XXX-XXX-XX-XX]</p>
-            <p style="color: var(--purple-accent);">telegram: @your_username</p>
+            <!-- -- ИЗМЕНЕНИЕ: Обновлен контакт Telegram -- -->
+            <p style="color: var(--purple-accent);">telegram: @V_Vovanovna</p>
           </div>
           <div class="mascot-column mascot-container mascot-fade mascot-float">
             <!-- INSERT CONTACTS MASCOT IMAGE HERE -->
@@ -1168,7 +1199,8 @@
 
     document.querySelectorAll('.mascot-fade').forEach(el => mascotObserver.observe(el));
 
-    // Parallax Effect for blobs
+    // -- ОТКЛЮЧЕНО: Parallax Effect for blobs --
+    /*
     const parallaxBlobs = document.querySelectorAll('.parallax-blob');
     const sections = document.querySelectorAll('.parallax-section');
 
@@ -1195,9 +1227,12 @@
         });
       });
     }
+    */
 
     // Parallax effect for cards on hover
     document.querySelectorAll('.about-text-frame').forEach(card => {
+        // Проверяем prefersReducedMotion только один раз при инициализации
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (prefersReducedMotion) {
             // Если включена опция prefers-reduced-motion, отключаем JS-параллакс для карточек
             return;
